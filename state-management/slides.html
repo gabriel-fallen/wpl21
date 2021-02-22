@@ -1,0 +1,178 @@
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0 minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <title>Client-side state management</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/flowtime.css">
+  <link rel="stylesheet" href="css/themes/default.css">
+  <link rel="stylesheet" href="css/prism.css">
+
+  <!-- Polyfills only needed for Firefox and Edge. -->
+  <script src="https://unpkg.com/@webcomponents/webcomponentsjs@latest/webcomponents-loader.js"></script>
+  <script type="text/javascript">
+    // Trick MobX about Node.js env
+    var process = { env: { NODE_ENV: "" } };
+  </script>
+</head>
+<body>
+
+<div class="flowtime">
+  
+  <div class="ft-section" data-id="meta" data-title="Introduction">
+    
+    <div class="ft-page" data-id="title-page">
+      <div class="stack-center">
+        <div class="stacked-center">
+          <h1>Client-side state management</h1>
+          <p>Alex Chichigin <br />
+             <small>12 Mar 2021</small></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ft-page" data-id="about-page">
+      <h2>About me</h2>
+
+      <ul>
+        <li>PhD Student/Software Developer @ TU Delft</li>
+        <li>MixDress hobby-developer</li>
+        <li>~10 years Web dev
+          <p>
+          <ul>
+            <li>Haskell + Servant + Yesod</li>
+            <li>Java + Spring MVC (Boot) / JavaEE 6</li>
+            <li>Python + Django / Web2py</li>
+            <li>Clojure + Noir + stuff</li>
+            <li>Ruby on Rails many years ago</li>
+          </ul>
+          </p>
+        </li>
+        <li class="ft-fragment">I <strong>hate</strong> Web dev!</li>
+      </ul>
+
+      <div style="position: absolute; right: 2rem; top: 8rem">
+        <img src="img/Baikal_selfie1_small.jpg" style="border-radius: 20%;" />
+      </div>
+    </div>
+
+    <div class="ft-page" data-id="lecture-page">
+      <h2>About lecture</h2>
+
+      <ul>
+        <li>Somewhat advanced</li>
+        <li>Supplemental</li>
+        <li>Superficial</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="ft-section" data-id="motivation" data-title="Motivation">
+
+    <div class="ft-page" data-id="basic-page">
+      <h2>Basic example</h2>
+      <pre><code class="language-jsx">
+class Timer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { seconds: 0 };
+  }
+  tick() {
+    this.setState(state => ({ seconds: state.seconds + 1 }));
+  }
+  componentDidMount() {
+    this.interval = setInterval(() => this.tick(), 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+  render() {
+    return (
+      &lt;div&gt;Seconds: {this.state.seconds}&lt;/div&gt;
+    );
+  }
+}
+      </code></pre>
+    </div>
+
+    <div class="ft-page" data-id="challenge-page">
+      <h2>The challenge</h2>
+      <div class="stack-center">
+        <img class="stacked-center" src="img/Screenshot_TUDelft_profile.png" />
+      </div>
+    </div>
+
+    <div class="ft-page" data-id="problems-page">
+      <h2>Problems</h2>
+
+      <ul>
+        <li>Reassembling whole structure from parts</li>
+        <li>Validating relations</li>
+        <li>Single responsibility violation</li>
+        <li>Data management/audit</li>
+      </ul>
+    </div>
+
+    <div class="ft-page" data-id="solutions-page">
+      <h2>Solution</h2>
+      <div class="stack-center">
+        <h3 class="stacked-center">We need a <strong>Database</strong>!</h3>
+      </div>
+    </div>
+
+    <div class="ft-page" data-id="solutions-page">
+      <h2>Frameworks</h2>
+      <div class="stack-center">
+        <img class="stacked-center" src="img/state_mgmt_libs.svg" />
+      </div>
+    </div>
+
+    <div class="ft-page" data-id="example-page">
+      <h2>Example app</h2>
+
+      <script type="module" src="js/issuer/mobx/views.js"></script>
+      <app-view></app-view>
+    </div>
+
+  </div>
+
+  <div class="ft-section" data-id="reactive-oo" data-title="Reactive OO">
+
+    <div class="ft-page" data-id="placeholder-page">
+      <h2>Placeholder</h2>
+    </div>
+
+    <div class="ft-page" data-id="mobx-diagram-page">
+      <h2>MobX concept</h2>
+      <div class="stack-center">
+        <img class="stacked-center" src="img/action-state-view.png" />
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ft-section" data-id="reactive-fp" data-title="Reactive FP">
+
+    <div class="ft-page" data-id="tea-diagram-page">
+      <h2>The Elm Architecture</h2>
+
+      <div class="ft-fragment stack-center"><img class="stacked-center" src="img/model-view-update.svg"></div>
+      <div class="ft-fragment stack-center"><img class="stacked-center" src="img/model-view-update-commands.svg"></div>
+      <div class="ft-fragment stack-center"><img class="stacked-center" src="img/mvu-subscription.svg"></div>
+    </div>
+
+    <div class="ft-page" data-id="placeholder-page">
+      <h2>Placeholder</h2>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="js/flowtime.min.js"></script>
+<script src="js/prism.js"></script>
+</body>
+</html>
