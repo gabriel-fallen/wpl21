@@ -24,7 +24,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -42,7 +42,7 @@
      id="namedview957"
      showgrid="false"
      inkscape:zoom="1.7226075"
-     inkscape:cx="359.21281"
+     inkscape:cx="351.66611"
      inkscape:cy="175.27548"
      inkscape:window-x="0"
      inkscape:window-y="0"
@@ -192,51 +192,6 @@
       </switch>
     </g>
     <ellipse
-       cx="488.87439"
-       cy="142.30676"
-       rx="60"
-       ry="40"
-       fill="#d5e8d4"
-       stroke="#82b366"
-       pointer-events="all"
-       id="ellipse935-0"
-       style="fill:#d3bc5f" />
-    <g
-       transform="translate(-172.18163,109.60276)"
-       id="g943-0">
-      <switch
-         id="switch941-4">
-        <foreignObject
-           style="overflow: visible; text-align: left;"
-           pointer-events="none"
-           width="100%"
-           height="100%"
-           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-          <xhtml:div
-             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 38px; height: 1px; padding-top: 40px; margin-left: 641px;">
-            <xhtml:div
-               style="box-sizing: border-box; font-size: 0; text-align: center; ">
-              <xhtml:div
-                 style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                <xhtml:h1>Flux</xhtml:h1>
-              </xhtml:div>
-            </xhtml:div>
-          </xhtml:div>
-        </foreignObject>
-        <text
-           x="660"
-           y="44"
-           fill="#000000"
-           font-family="Helvetica"
-           font-size="12px"
-           text-anchor="middle"
-           id="text939-4"
-           style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
-             id="tspan963-4">Flux</tspan></text>
-      </switch>
-    </g>
-    <ellipse
        cx="215.45169"
        cy="-59.712563"
        rx="60"
@@ -327,6 +282,51 @@
       </switch>
     </g>
   </g>
+  <ellipse
+     cx="532.59735"
+     cy="259.13727"
+     rx="60"
+     ry="40"
+     fill="#d5e8d4"
+     stroke="#82b366"
+     pointer-events="all"
+     id="ellipse935-0"
+     style="fill:#d3bc5f" />
+  <g
+     transform="translate(-128.41068,226.43326)"
+     id="g943-0">
+    <switch
+       id="switch941-4">
+      <foreignObject
+         style="overflow: visible; text-align: left;"
+         pointer-events="none"
+         width="100%"
+         height="100%"
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+        <xhtml:div
+           style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 38px; height: 1px; padding-top: 40px; margin-left: 641px;">
+          <xhtml:div
+             style="box-sizing: border-box; font-size: 0; text-align: center; ">
+            <xhtml:div
+               style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+              <xhtml:h1>Flux</xhtml:h1>
+            </xhtml:div>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         x="660"
+         y="44"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="12px"
+         text-anchor="middle"
+         id="text939-4"
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
+           id="tspan963-4">Flux</tspan></text>
+    </switch>
+  </g>
   <switch
      id="switch953"
      transform="translate(0.31096649,128.73832)">
@@ -346,4 +346,49 @@
          id="text949">Viewer does not support full SVG 1.1</text>
     </a>
   </switch>
+  <ellipse
+     cx="360.40247"
+     cy="216.08389"
+     rx="60"
+     ry="40"
+     fill="#d5e8d4"
+     stroke="#82b366"
+     pointer-events="all"
+     id="ellipse935-0-3"
+     style="fill:#c837ab" />
+  <g
+     transform="translate(-300.34954,183.57189)"
+     id="g943-0-6">
+    <switch
+       id="switch941-4-7">
+      <foreignObject
+         style="overflow: visible; text-align: left;"
+         pointer-events="none"
+         width="100%"
+         height="100%"
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+        <xhtml:div
+           style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 38px; height: 1px; padding-top: 40px; margin-left: 641px;">
+          <xhtml:div
+             style="box-sizing: border-box; font-size: 0; text-align: center; ">
+            <xhtml:div
+               style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+              <xhtml:h1>RxJS</xhtml:h1>
+            </xhtml:div>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         x="660"
+         y="44"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="12px"
+         text-anchor="middle"
+         id="text939-4-5"
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
+           id="tspan963-4-3">RxJS</tspan></text>
+    </switch>
+  </g>
 </svg>
