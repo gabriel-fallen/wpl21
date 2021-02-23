@@ -130,6 +130,10 @@ class Timer extends React.Component {
       </div>
     </div>
 
+  </div>
+
+  <div class="ft-section" data-id="example-app" data-title="Example App">
+
     <div class="ft-page" data-id="example-page">
       <h2>Example app</h2>
 
@@ -137,12 +141,37 @@ class Timer extends React.Component {
       <app-view></app-view>
     </div>
 
+    <div class="ft-page" data-id="domain-model-page">
+      <h2>"Domain Model"</h2>
+      <pre><code class="language-js">
+export class Issue {
+  constructor(title = 'New issue', description = 'Issue description', assignee) {
+    this.title = title;
+    this.description = description;
+    this.assignee = assignee;
+    this.active = true;
+  }
+}
+
+export class Issues {
+  constructor(issues = []) {
+    this.issues = issues;
+  }
+
+  add(issue) {
+    this.issues.push(issue);
+  }
+}
+      </code></pre>
+    </div>
+
   </div>
 
   <div class="ft-section" data-id="reactive-oo" data-title="Reactive OO">
 
     <div class="ft-page" data-id="placeholder-page">
-      <h2>Placeholder</h2>
+      <h2>MobX</h2>
+      <p>Objects with reactive properties</p>
     </div>
 
     <div class="ft-page" data-id="mobx-diagram-page">
@@ -150,6 +179,48 @@ class Timer extends React.Component {
       <div class="stack-center">
         <img class="stacked-center" src="img/action-state-view.png" />
       </div>
+    </div>
+
+    <div class="ft-page" data-id="mobx-timer-page">
+      <h2>Reactive timer</h2>
+      <pre><code class="language-js">
+import React from "react"
+import ReactDOM from "react-dom"
+import { makeAutoObservable } from "mobx"
+import { observer } from "mobx-react"
+
+class Timer {
+    secondsPassed = 0
+    constructor() {
+        makeAutoObservable(this)
+    }
+    increase() {
+        this.secondsPassed += 1
+    }
+    reset() {
+        this.secondsPassed = 0
+    }
+}
+      </code></pre>
+    </div>
+
+    <div class="ft-page" data-id="mobx-timer-ui-page">
+      <h2>Reactive timer UI</h2>
+      <pre><code class="language-js">
+const myTimer = new Timer()
+
+// Build a "user interface" that uses the observable state.
+const TimerView = observer(({ timer }) => (
+    &lt;button onClick={() => timer.reset()}&gt;Seconds passed: {timer.secondsPassed}&lt;/button&gt;
+))
+
+ReactDOM.render(&lt;TimerView timer={myTimer} /&gt;, document.body)
+
+// Update the 'Seconds passed: X' text every second.
+setInterval(() => {
+    myTimer.increase()
+}, 1000)
+      </code></pre>
     </div>
 
   </div>
@@ -164,8 +235,16 @@ class Timer extends React.Component {
       <div class="ft-fragment stack-center"><img class="stacked-center" src="img/mvu-subscription.svg"></div>
     </div>
 
-    <div class="ft-page" data-id="placeholder-page">
-      <h2>Placeholder</h2>
+    <div class="ft-page" data-id="redux-page">
+      <h2>Redux</h2>
+      <p>Redux is a pattern and library for managing and updating application state, using events called "actions"</p>
+    </div>
+
+    <div class="ft-page" data-id="redux-issuer-page">
+      <h2>Redux version</h2>
+
+      <script type="module" src="js/issuer/redux/views.js"></script>
+      <store-view></store-view>
     </div>
 
   </div>
