@@ -7,7 +7,7 @@ import { goTo } from './pages.js';
 import store from './store.js';
 
 
-export class IssueLineView extends LitElement {
+class IssueLineView extends LitElement {
   static get properties() {
     return {
       index: { attribute: false }
@@ -29,7 +29,7 @@ export class IssueLineView extends LitElement {
 customElements.define('issue-line-view-store', IssueLineView);
 
 
-export class IssueView extends LitElement {
+class IssueView extends LitElement {
   static get properties() {
     return {
       index: { attribute: false }
@@ -56,7 +56,7 @@ export class IssueView extends LitElement {
 customElements.define('issue-view-store', IssueView);
 
 
-export class IssueEditView extends LitElement {
+class IssueEditView extends LitElement {
   render() {
     return html`
       <form>
@@ -101,7 +101,7 @@ function renderSingle(currentIndex) {
   return html`<issue-view-store .index="${currentIndex}"></issue-view-store>`;
 }
 
-export class AppView extends LitElement {
+class AppView extends LitElement {
   constructor() {
     super();
     store.subscribe(() => this.requestUpdate());

@@ -6,7 +6,7 @@ import { Issue } from '../models.js';
 import { App } from './view-models.js';
 
 
-export class IssueLineView extends MobxLitElement {
+class IssueLineView extends MobxLitElement {
   static get properties() {
     return {
       app: { attribute: false },
@@ -26,7 +26,7 @@ export class IssueLineView extends MobxLitElement {
 customElements.define('issue-line-view', IssueLineView);
 
 
-export class IssueView extends MobxLitElement {
+class IssueView extends MobxLitElement {
   static get properties() {
     return {
       app: { attribute: false },
@@ -51,7 +51,7 @@ export class IssueView extends MobxLitElement {
 customElements.define('issue-view', IssueView);
 
 
-export class IssueEditView extends MobxLitElement {
+class IssueEditView extends MobxLitElement {
   static get properties() {
     return {
       app: { attribute: false }
@@ -102,7 +102,7 @@ function renderSingle(app, currentIssue) {
   return html`<issue-view .app="${app}" .issue="${currentIssue}"></issue-view>`;
 }
 
-export class AppView extends MobxLitElement {
+class AppView extends MobxLitElement {
   app = new App();
 
   constructor() {
