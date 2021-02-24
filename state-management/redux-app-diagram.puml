@@ -1,0 +1,83 @@
+@startuml
+
+package "Models" {
+  class Issue {
+    title : String
+    description : String
+    assignee : String
+    active : Bool
+  }
+
+  class Issues {
+    issues : Issue[]
+
+    add(issue)
+  }
+
+  Issues o-- Issue
+}
+
+package "Issues Slice" {
+  abstract class issuesReducer
+  abstract class issueAdded
+  abstract class toggleActive
+}
+
+package "Pages Slice" {
+  abstract class pagesReducer
+  abstract class goTo
+}
+
+package Store {
+  abstract class rootReducer
+  abstract class middleware
+  class store
+
+  rootReducer o- issuesReducer
+  rootReducer o- pagesReducer
+
+  store o-- rootReducer
+  store o-- middleware
+}
+
+package "Views" {
+  class IssueLineView {
+    index : Number
+
+    render()
+    goTo()
+  }
+
+  IssueLineView o- store
+  IssueLineView o-- goTo
+
+  class IssueView {
+    index : Number
+
+    render()
+    goBack()
+  }
+
+  IssueView o- store
+  IssueView o-- goTo
+
+  class IssueEditView {
+    render()
+    save()
+  }
+
+  IssueEditView o- store
+  IssueEditView o-- Issue
+
+  class AppView {
+    render()
+  }
+
+  AppView o- store
+
+  ' AppView o-- IssueLineView
+  ' AppView o-- IssueEditView
+  ' AppView o-- IssueView
+}
+
+@enduml

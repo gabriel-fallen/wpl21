@@ -1,0 +1,89 @@
+@startuml
+
+package "Models" {
+  class Issue {
+    title : String
+    description : String
+    assignee : String
+    active : Bool
+  }
+
+  class Issues {
+    issues : Issue[]
+
+    add(issue)
+  }
+
+  Issues o-- Issue
+}
+
+package "ViewModels" {
+  IssueVM o- Issue
+
+  class IssuesVM {
+    data : Issues
+
+    add(issue)
+    load()
+    save()
+  }
+
+  IssuesVM o- Issues
+
+  class App {
+    currentIssue : IssueVM
+    issuesVM : IssuesVM
+
+    goTo(issue)
+  }
+
+  App o-- IssueVM
+  App o-- IssuesVM
+}
+
+package "Views" {
+  class IssueLineView {
+    app : App
+    issue : Issue
+
+    goTo()
+    render()
+  }
+
+  IssueLineView o- App
+  IssueLineView o- IssueVM
+
+  class IssueView {
+    app : App
+    issue : Issue
+
+    goBack()
+    render()
+  }
+
+  IssueView o- App
+  IssueView o- IssueVM
+
+  class IssueEditView {
+    app : App
+
+    save()
+    render()
+  }
+
+  IssueEditView o- App
+  IssueEditView o- IssueVM
+
+  class AppView {
+    app : App
+
+    render()
+  }
+
+  AppView o- App
+  ' AppView o-- IssueLineView
+  ' AppView o-- IssueEditView
+  ' AppView o-- IssueView
+}
+
+@enduml
