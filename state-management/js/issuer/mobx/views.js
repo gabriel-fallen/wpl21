@@ -18,7 +18,8 @@ class IssueLineView extends MobxLitElement {
     return html`<a href="#" @click=${this.goTo}>${this.issue.title}</a>`;
   }
 
-  goTo() {
+  goTo(e) {
+    e.preventDefault();
     this.app.goTo(this.issue);
   }
 }
@@ -43,7 +44,8 @@ class IssueView extends MobxLitElement {
     `;
   }
 
-  goBack() {
+  goBack(e) {
+    e.preventDefault();
     this.app.goTo(null);
   }
 }

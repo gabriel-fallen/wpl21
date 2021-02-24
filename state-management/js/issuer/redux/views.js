@@ -21,7 +21,8 @@ class IssueLineView extends LitElement {
     return html`<a href="#" @click=${this.goTo}>${issue.title}</a>`;
   }
 
-  goTo() {
+  goTo(e) {
+    e.preventDefault();
     store.dispatch(goTo(this.index));
   }
 }
@@ -48,7 +49,8 @@ class IssueView extends LitElement {
     `;
   }
 
-  goBack() {
+  goBack(e) {
+    e.preventDefault();
     store.dispatch(goTo(null));
   }
 }
