@@ -62,14 +62,37 @@ class IssueEditView extends MobxLitElement {
 
   render() {
     return html`
-      <form>
-        <label for="title">Title: </label>
-        <input id="title" .value="" />
-        <label for="assignee">Assignee: </label>
-        <input id="assignee" .value="" />
-        <label for="description">Description: </label>
-        <input id="description" .value="" />
-        <button @click=${this.save}>Add</button>
+      <link rel="stylesheet" href="css/spectre.min.css">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <div class="col-1 col-sm-12">
+            <label class="form-label" for="title">Title: </label>
+          </div>
+          <div class="col-2 col-sm-12">
+            <input class="form-input" id="title" .value="" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-1 col-sm-12">
+            <label class="form-label" for="assignee">Assignee: </label>
+          </div>
+          <div class="col-2 col-sm-12">
+            <input class="form-input" id="assignee" .value="" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-1 col-sm-12">
+            <label class="form-label" for="description">Description: </label>
+          </div>
+          <div class="col-2 col-sm-12">
+            <textarea class="form-input" id="description" rows="4" .value=""></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-1 col-sm-4">
+            <button class="btn btn-primary" @click=${this.save}>Add</button>
+          </div>
+        </div>
       </form>
     `;
   }
