@@ -30,6 +30,20 @@ class IssueLineView extends LitElement {
 customElements.define('issue-line-view-store', IssueLineView);
 
 
+class ToList extends LitElement {
+  render() {
+    return html`<p><a href="#" @click=${this.goBack}>To list</a></p>`;
+  }
+
+  goBack(e) {
+    e.preventDefault();
+    store.dispatch(goTo(LIST));
+  }
+}
+
+customElements.define('to-list', ToList);
+
+
 class IssueView extends LitElement {
   static get properties() {
     return {
@@ -45,13 +59,8 @@ class IssueView extends LitElement {
       <h2>${issue.title}</h2>
       <p><strong>${issue.assignee ? issue.assignee : "Unassigned"}</strong></p>
       <p>${issue.description}</p>
-      <p><a href="#" @click=${this.goBack}>To list</a></p>
+      <to-list></to-list>
     `;
-  }
-
-  goBack(e) {
-    e.preventDefault();
-    store.dispatch(goTo(LIST));
   }
 }
 
@@ -62,6 +71,7 @@ class IssueEditView extends LitElement {
   render() {
     return html`
       <link rel="stylesheet" href="css/spectre.min.css">
+      <to-list></to-list>
       <form class="form-horizontal">
         <div class="form-group">
           <div class="col-1 col-sm-12">
@@ -99,12 +109,17 @@ class IssueEditView extends LitElement {
   save(e) {
     e.preventDefault();
 
-    const title = this.shadowRoot.querySelector('#title').value;
-    const assignee = this.shadowRoot.querySelector('#assignee').value;
-    const description = this.shadowRoot.querySelector('#description').value;
+    const title = this.shadowRoot.querySelector('#title');
+    const assignee = this.shadowRoot.querySelector('#assignee');
+    const description = this.shadowRoot.querySelector('#description');
 
-    const issue = new Issue(title, description, assignee);
+    const issue = new Issue(title.value, description.value, assignee.value);
     // console.log(`issue-edit-view-store saving ${JSON.stringify(issue)}`);
+
+    title.value = '';
+    assignee.value = '';
+    description.value = '';
+
     store.dispatch(issueAdded(issue));
   }
 }
@@ -117,8 +132,6 @@ function renderList(issues) {
     <ul>
       ${issues.map((_issue, index) => html`<li><issue-line-view-store .index="${index}"></issue-line-view-store></li>`)}
     </ul>
-    <hr />
-    <issue-edit-view-store></issue-edit-view-store>
   `;
 }
 
@@ -136,10 +149,34 @@ class AppView extends LitElement {
     const state = store.getState();
     const page  = state.currentIndex;
 
-    return html`
+    const header = html`
       <h2>Issuer</h2>
-      ${(page.page === ISSUE) ? renderSingle(page.index) : renderList(state.issues.issues)}
+      <p><a href="#" @click=${this.goEdit}>New issue</a></p>
+      <hr />
     `;
+
+    switch(page.page) {
+      case ISSUE:
+        return html`
+          ${header}
+          ${renderSingle(page.index)}
+        `;
+      case EDIT:
+        return html`
+          ${header}
+          <issue-edit-view-store></issue-edit-view-store>
+        `;
+      default:
+        return html`
+          ${header}
+          ${renderList(state.issues.issues)}
+        `;
+    }
+  }
+
+  goEdit(e) {
+    e.preventDefault();
+    store.dispatch(goTo(EDIT));
   }
 }
 
