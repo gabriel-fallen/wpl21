@@ -1,5 +1,11 @@
 
-export function pagesReducer(state = null, action) {
+export const LIST  = 'list';
+export const ISSUE = 'issue';
+export const EDIT  = 'edit';
+
+const initialState = { page: LIST, index: null };
+
+export function pagesReducer(state = initialState, action) {
   switch(action.type) {
     case 'pages/goto': {
       return action.payload;
@@ -9,9 +15,9 @@ export function pagesReducer(state = null, action) {
   }
 }
 
-export function goTo(index) {
+export function goTo(page, index = null) {
   return {
     type: 'pages/goto',
-    payload: index
+    payload: { page, index }
   };
 }

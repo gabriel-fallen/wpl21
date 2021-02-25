@@ -2,7 +2,7 @@ import { LitElement, html } from 'https://unpkg.com/lit-element/lit-element.js?m
 
 import { Issue } from '../models.js';
 import { issueAdded } from './issues.js';
-import { goTo } from './pages.js';
+import { LIST, ISSUE, EDIT, goTo } from './pages.js';
 
 import store from './store.js';
 
@@ -23,7 +23,7 @@ class IssueLineView extends LitElement {
 
   goTo(e) {
     e.preventDefault();
-    store.dispatch(goTo(this.index));
+    store.dispatch(goTo(ISSUE, this.index));
   }
 }
 
@@ -51,7 +51,7 @@ class IssueView extends LitElement {
 
   goBack(e) {
     e.preventDefault();
-    store.dispatch(goTo(null));
+    store.dispatch(goTo(LIST));
   }
 }
 
@@ -61,14 +61,37 @@ customElements.define('issue-view-store', IssueView);
 class IssueEditView extends LitElement {
   render() {
     return html`
-      <form>
-        <label for="title">Title: </label>
-        <input id="title" .value="" />
-        <label for="assignee">Assignee: </label>
-        <input id="assignee" .value="" />
-        <label for="description">Description: </label>
-        <input id="description" .value="" />
-        <button @click=${this.save}>Add</button>
+      <link rel="stylesheet" href="css/spectre.min.css">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <div class="col-1 col-sm-12">
+            <label class="form-label" for="title">Title: </label>
+          </div>
+          <div class="col-2 col-sm-12">
+            <input class="form-input" id="title" .value="" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-1 col-sm-12">
+            <label class="form-label" for="assignee">Assignee: </label>
+          </div>
+          <div class="col-2 col-sm-12">
+            <input class="form-input" id="assignee" .value="" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-1 col-sm-12">
+            <label class="form-label" for="description">Description: </label>
+          </div>
+          <div class="col-2 col-sm-12">
+            <textarea class="form-input" id="description" rows="4" .value=""></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-1 col-sm-4">
+            <button class="btn btn-primary" @click=${this.save}>Add</button>
+          </div>
+        </div>
       </form>
     `;
   }
@@ -111,10 +134,11 @@ class AppView extends LitElement {
 
   render() {
     const state = store.getState();
+    const page  = state.currentIndex;
 
     return html`
       <h2>Issuer</h2>
-      ${(state.currentIndex !== null) ? renderSingle(state.currentIndex) : renderList(state.issues.issues)}
+      ${(page.page === ISSUE) ? renderSingle(page.index) : renderList(state.issues.issues)}
     `;
   }
 }

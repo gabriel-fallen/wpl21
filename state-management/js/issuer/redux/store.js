@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
 const localStoreMiddleware = storeAPI => next => action => {
   const result = next(action);
   const state = storeAPI.getState();
-  console.log('next state', state);
+  // console.log('next state', state);
   save(state.issues);
   return result
 };
