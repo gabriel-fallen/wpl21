@@ -13,7 +13,7 @@ export function issuesReducer(state = initialState, action) {
     case 'issue/toggleActive': {
       const index = action.payload;
       const issues = state.issues;
-      issues[index].active = !issues[index].active;
+      issues[index] = { ...issues[index], active: !issues[index].active };
       const newState = new Issues(issues);
       return newState;
     }

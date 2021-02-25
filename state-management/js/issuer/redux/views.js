@@ -1,7 +1,7 @@
 import { LitElement, html } from 'https://unpkg.com/lit-element/lit-element.js?module';
 
 import { Issue } from '../models.js';
-import { issueAdded } from './issues.js';
+import { issueAdded, toggleActive } from './issues.js';
 import { LIST, ISSUE, EDIT, goTo } from './pages.js';
 
 import store from './store.js';
@@ -18,7 +18,10 @@ class IssueLineView extends LitElement {
     const state = store.getState();
     const issue = state.issues.issues[this.index];
 
-    return html`<a href="#" @click=${this.goTo}>${issue.title}</a>`;
+    if (issue.active)
+      return html`<a href="#" @click=${this.goTo}>${issue.title}</a>`;
+
+    return html`<a href="#" @click=${this.goTo}><strike><i>${issue.title}</i></strike></a>`;
   }
 
   goTo(e) {
@@ -56,11 +59,21 @@ class IssueView extends LitElement {
     const issue = state.issues.issues[this.index];
 
     return html`
-      <h2>${issue.title}</h2>
-      <p><strong>${issue.assignee ? issue.assignee : "Unassigned"}</strong></p>
-      <p>${issue.description}</p>
       <to-list></to-list>
+      <h3>${issue.title}</h3>
+      <p><strong>${issue.assignee ? issue.assignee : "Unassigned"}</strong></p>
+      <div class="form-group">
+        <label class="form-checkbox">
+          <input type="checkbox" ?checked="${issue.active}" @click=${this.toggle} />
+          <i class="form-icon"></i> Active
+        </label>
+      </div>
+      <p>${issue.description}</p>
     `;
+  }
+
+  toggle() {
+    store.dispatch(toggleActive(this.index));
   }
 }
 
