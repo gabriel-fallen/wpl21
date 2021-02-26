@@ -246,6 +246,43 @@ setInterval(() => {
       <p>Redux is a pattern and library for managing and updating application state, using events called "actions"</p>
     </div>
 
+    <div class="ft-page" data-id="redux-counter-page">
+      <h2>Redux counter</h2>
+      <pre><code class="language-js">
+import { createStore } from 'redux'
+
+function counterReducer(state = { value: 0 }, action) {
+  switch (action.type) {
+    case 'counter/incremented':
+      return { value: state.value + 1 }
+    case 'counter/decremented':
+      return { value: state.value - 1 }
+    default:
+      return state
+  }
+}
+
+// Create a Redux store holding the state of your app.
+// Its API is { subscribe, dispatch, getState }.
+let store = createStore(counterReducer)
+
+store.subscribe(() => console.log(store.getState()))
+
+store.dispatch({ type: 'counter/incremented' })
+// {value: 1}
+store.dispatch({ type: 'counter/incremented' })
+// {value: 2}
+store.dispatch({ type: 'counter/decremented' })
+// {value: 1}
+      </code></pre>
+    </div>
+
+    <div class="ft-page" data-id="redux-app-diagram-page">
+      <h2>App Architecture</h2>
+
+      <div class="stack-center"><img class="stacked-center" src="img/redux-app-diagram.png"></div>
+    </div>
+
     <div class="ft-page" data-id="redux-issuer-page">
       <h2>Redux version</h2>
 
@@ -253,10 +290,16 @@ setInterval(() => {
       <store-view></store-view>
     </div>
 
-    <div class="ft-page" data-id="redux-app-diagram-page">
-      <h2>App Architecture</h2>
+  </div>
 
-      <div class="stack-center"><img class="stacked-center" src="img/redux-app-diagram.png"></div>
+  <div class="ft-section" data-id="under-the-hood" data-title="Under the hood">
+
+    <div class="ft-page" data-id="mobx-title-page">
+      <h2>MobX</h2>
+    </div>
+
+    <div class="ft-page" data-id="redux-title-page">
+      <h2>Redux</h2>
     </div>
 
   </div>
