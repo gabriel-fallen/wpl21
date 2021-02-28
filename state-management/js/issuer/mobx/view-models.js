@@ -21,7 +21,7 @@ export class IssuesVM {
   }
 
   load() {
-    this.data = load();
+    this.data = observable(load());
   }
 
   save() {
@@ -29,20 +29,49 @@ export class IssuesVM {
   }
 }
 
+export const ISSUE = 'issue';
+export const EDIT  = 'edit';
+export const LIST  = 'list';
+
+const LIST_PAGE = {
+  page: LIST,
+  issue: null
+};
+
+const EDIT_PAGE = {
+  page: EDIT,
+  issue: null
+};
+
+export function issuePage(issue) {
+  return {
+    page: ISSUE,
+    issue
+  }
+}
+
+export function listPage() {
+  return LIST_PAGE;
+}
+
+export function editPage(issue) {
+  return EDIT_PAGE;
+}
+
 export class App {
-  currentIssue = null;
+  currentPage = LIST_PAGE;
   issuesVM = new IssuesVM();
 
   constructor() {
     makeObservable(this, {
-      currentIssue: observable,
+      currentPage: observable,
       issuesVM: observable,
       goTo: action
     });
     // this.issuesVM = new IssuesVM(); // non-observable in itself
   }
 
-  goTo(issue) {
-    this.currentIssue = issue;
+  goTo(page) {
+    this.currentPage = page;
   }
 }

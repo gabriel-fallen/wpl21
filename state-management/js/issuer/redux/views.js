@@ -44,7 +44,7 @@ class ToList extends LitElement {
   }
 }
 
-customElements.define('to-list', ToList);
+customElements.define('to-list-store', ToList);
 
 
 class IssueView extends LitElement {
@@ -59,7 +59,7 @@ class IssueView extends LitElement {
     const issue = state.issues.issues[this.index];
 
     return html`
-      <to-list></to-list>
+      <to-list-store></to-list-store>
       <h3>${issue.title}</h3>
       <p><strong>${issue.assignee ? issue.assignee : "Unassigned"}</strong></p>
       <div class="form-group">
@@ -84,7 +84,7 @@ class IssueEditView extends LitElement {
   render() {
     return html`
       <link rel="stylesheet" href="css/spectre.min.css">
-      <to-list></to-list>
+      <to-list-store></to-list-store>
       <form class="form-horizontal">
         <div class="form-group">
           <div class="col-1 col-sm-12">

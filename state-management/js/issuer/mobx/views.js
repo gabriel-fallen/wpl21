@@ -3,7 +3,7 @@ import { LitElement, html } from 'https://unpkg.com/lit-element/lit-element.js?m
 import { MobxLitElement } from 'https://unpkg.com/@adobe/lit-mobx/lit-mobx.js?module';
 
 import { Issue } from '../models.js';
-import { App } from './view-models.js';
+import { editPage, issuePage, listPage, App, ISSUE, EDIT } from './view-models.js';
 
 
 class IssueLineView extends MobxLitElement {
@@ -15,16 +15,39 @@ class IssueLineView extends MobxLitElement {
   }
 
   render() {
-    return html`<a href="#" @click=${this.goTo}>${this.issue.title}</a>`;
+    if (this.issue.active)
+      return html`<a href="#" @click=${this.goTo}>${this.issue.title}</a>`;
+
+    return html`<a href="#" @click=${this.goTo}><strike><i>${this.issue.title}</i></strike></a>`;
   }
 
   goTo(e) {
     e.preventDefault();
-    this.app.goTo(this.issue);
+    this.app.goTo(issuePage(this.issue));
   }
 }
 
 customElements.define('issue-line-view', IssueLineView);
+
+
+class ToList extends LitElement {
+  static get properties() {
+    return {
+      app: { attribute: false }
+    };
+  }
+
+  render() {
+    return html`<p><a href="#" @click=${this.goBack}>To list</a></p>`;
+  }
+
+  goBack(e) {
+    e.preventDefault();
+    this.app.goTo(listPage());
+  }
+}
+
+customElements.define('to-list', ToList);
 
 
 class IssueView extends MobxLitElement {
@@ -37,16 +60,21 @@ class IssueView extends MobxLitElement {
 
   render() {
     return html`
+      <to-list .app="${this.app}"></to-list>
       <h2>${this.issue.title}</h2>
       <p><strong>${this.issue.assignee ? this.issue.assignee : "Unassigned"}</strong></p>
+      <div class="form-group">
+        <label class="form-checkbox">
+          <input type="checkbox" ?checked="${this.issue.active}" @click=${this.toggle} />
+          <i class="form-icon"></i> Active
+        </label>
+      </div>
       <p>${this.issue.description}</p>
-      <p><a href="#" @click=${this.goBack}>To list</a></p>
     `;
   }
 
-  goBack(e) {
-    e.preventDefault();
-    this.app.goTo(null);
+  toggle() {
+    this.issue.active = !this.issue.active;
   }
 }
 
@@ -63,6 +91,7 @@ class IssueEditView extends MobxLitElement {
   render() {
     return html`
       <link rel="stylesheet" href="css/spectre.min.css">
+      <to-list .app="${this.app}"></to-list>
       <form class="form-horizontal">
         <div class="form-group">
           <div class="col-1 col-sm-12">
@@ -99,13 +128,18 @@ class IssueEditView extends MobxLitElement {
 
   save(e) {
     e.preventDefault();
+    
+    const title = this.shadowRoot.querySelector('#title');
+    const assignee = this.shadowRoot.querySelector('#assignee');
+    const description = this.shadowRoot.querySelector('#description');
 
-    const title = this.shadowRoot.querySelector('#title').value;
-    const assignee = this.shadowRoot.querySelector('#assignee').value;
-    const description = this.shadowRoot.querySelector('#description').value;
-
-    const issue = new Issue(title, description, assignee);
+    const issue = new Issue(title.value, description.value, assignee.value);
     // console.log(`issue-edit-view saving ${JSON.stringify(issue)}`);
+
+    title.value = '';
+    assignee.value = '';
+    description.value = '';
+
     this.app.issuesVM.add(issue);
   }
 }
@@ -118,8 +152,6 @@ function renderList(app, issues) {
     <ul>
       ${issues.map(issue => html`<li><issue-line-view .app="${app}" .issue="${issue}"></issue-line-view></li>`)}
     </ul>
-    <hr />
-    <issue-edit-view .app="${app}"></issue-edit-view>
   `;
 }
 
@@ -136,10 +168,34 @@ class AppView extends MobxLitElement {
   }
 
   render() {
-    return html`
+    const header = html`
       <h2>Issuer</h2>
-      ${this.app.currentIssue ? renderSingle(this.app, this.app.currentIssue) : renderList(this.app, this.app.issuesVM.data.issues)}
+      <p><a href="#" @click=${this.goEdit}>New issue</a></p>
+      <hr />
     `;
+
+    switch(this.app.currentPage.page) {
+      case ISSUE:
+        return html`
+          ${header}
+          ${renderSingle(this.app, this.app.currentPage.issue)}
+        `;
+      case EDIT:
+        return html`
+          ${header}
+          <issue-edit-view .app="${this.app}"></issue-edit-view>
+        `;
+      default:
+        return html`
+          ${header}
+          ${renderList(this.app, this.app.issuesVM.data.issues)}
+        `;
+    }
+  }
+
+  goEdit(e) {
+    e.preventDefault();
+    this.app.goTo(editPage());
   }
 }
 
