@@ -20,25 +20,17 @@ package "Models" {
 package "ViewModels" {
   IssueVM o- Issue
 
-  class IssuesVM {
-    data : Issues
+  class App {
+    currentPage : Page
+    issues : IssueVM[]
 
     add(issue)
     load()
     save()
-  }
-
-  IssuesVM o- Issues
-
-  class App {
-    currentIssue : IssueVM
-    issuesVM : IssuesVM
-
-    goTo(issue)
+    goTo(page)
   }
 
   App o-- IssueVM
-  App o-- IssuesVM
 }
 
 package "Views" {
