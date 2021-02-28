@@ -140,7 +140,7 @@ class IssueEditView extends MobxLitElement {
     assignee.value = '';
     description.value = '';
 
-    this.app.issuesVM.add(issue);
+    this.app.add(issue);
   }
 }
 
@@ -161,11 +161,6 @@ function renderSingle(app, currentIssue) {
 
 class AppView extends MobxLitElement {
   app = new App();
-
-  constructor() {
-    super();
-    autorun(() => console.log(`Issues: [${this.app.issuesVM.data.issues.map(i => i.title).join(', ')}]`));
-  }
 
   render() {
     const header = html`
@@ -188,7 +183,7 @@ class AppView extends MobxLitElement {
       default:
         return html`
           ${header}
-          ${renderList(this.app, this.app.issuesVM.data.issues)}
+          ${renderList(this.app, this.app.issues)}
         `;
     }
   }

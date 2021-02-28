@@ -1,33 +1,7 @@
 import { makeObservable, observable, action } from 'https://unpkg.com/mobx/dist/mobx.esm.js?module';
 
-import { Issue, load, save } from '../models.js';
+import { load, save } from '../models.js';
 
-
-export class IssuesVM {
-  data;
-
-  constructor() {
-    makeObservable(this, {
-      data: observable,
-      add: action,
-      load: action
-    });
-    this.load();
-  }
-
-  add(issue) {
-    this.data.issues.push(issue);
-    this.save();
-  }
-
-  load() {
-    this.data = observable(load());
-  }
-
-  save() {
-    save(this.data);
-  }
-}
 
 export const ISSUE = 'issue';
 export const EDIT  = 'edit';
@@ -60,15 +34,30 @@ export function editPage(issue) {
 
 export class App {
   currentPage = LIST_PAGE;
-  issuesVM = new IssuesVM();
+  issues = [];
 
   constructor() {
     makeObservable(this, {
       currentPage: observable,
-      issuesVM: observable,
+      issues: observable,
+      add: action,
+      load: action,
       goTo: action
     });
-    // this.issuesVM = new IssuesVM(); // non-observable in itself
+    this.load();
+  }
+
+  add(issue) {
+    this.issues.push(issue);
+    this.save();
+  }
+
+  load() {
+    this.issues = load().issues;
+  }
+
+  save() {
+    save({issues: this.issues});
   }
 
   goTo(page) {
