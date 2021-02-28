@@ -1,0 +1,58 @@
+@startuml
+
+interface IObservable {
+    isBeingObserved_: boolean
+    observers_: Set<IDerivation>
+
+    onBUO(): void
+    onBO(): void
+}
+
+interface IAtom {
+    reportObserved()
+    reportChanged()
+}
+
+IObservable <|-- IAtom
+
+class Atom
+
+IAtom <|.. Atom
+
+
+interface IDerivation {
+    observing_: IObservable[]
+    newObserving_: null | IObservable[]
+    dependenciesState_: IDerivationState_
+
+    onBecomeStale_(): void
+}
+
+IObservable o-- IDerivation
+IObservable --o IDerivation
+
+interface IComputedValue {
+    get(): T
+    set(value: T): void
+    observe_(listener: (change: IComputedDidChange<T>) => void, fireImmediately?: boolean): Lambda
+}
+
+class ComputedValue
+
+IObservable    <|.. ComputedValue
+IComputedValue <|.. ComputedValue
+IDerivation    <|.. ComputedValue
+
+interface IObservableValue {
+    get(): T
+    set(value: T): void
+    intercept_(handler: IInterceptor<IValueWillChange<T>>): Lambda
+    observe_(listener: (change: IValueDidChange<T>) => void, fireImmediately?: boolean): Lambda
+}
+
+class ObservableValue
+
+IObservableValue <|.. ObservableValue
+Atom <|-- ObservableValue
+
+@enduml

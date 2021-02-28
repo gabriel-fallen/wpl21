@@ -294,12 +294,114 @@ store.dispatch({ type: 'counter/decremented' })
 
   <div class="ft-section" data-id="under-the-hood" data-title="Under the hood">
 
-    <div class="ft-page" data-id="mobx-title-page">
-      <h2>MobX</h2>
+    <div class="ft-page" data-id="under-the-hood-page">
+      <div class="stack-center">
+        <div class="stacked-center">
+          <h2>Under the hood</h2>
+          <p class="ft-fragment">There is no magic!</p>
+          <p class="ft-fragment">It's all just listeners...</p>
+        </div>
+      </div>
     </div>
 
+    <div class="ft-page" data-id="mobx-title-page">
+      <div class="stack-center">
+        <div class="stacked-center">
+          <h2>MobX</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="ft-page" data-id="mobx-class-diagram-page">
+      <h2>MobX Architecture (excerpt)</h2>
+
+      <div class="stack-center"><img class="stacked-center" src="img/mobx-class.png"></div>
+    </div>
+
+    <div class="ft-page" data-id="mobx-observable-value-page">
+      <h2>MobX ObservableValue</h2>
+      <pre><code class="language-ts">
+export class ObservableValue&lt;T&gt; extends Atom implements IObservableValue&lt;T&gt;, IInterceptable&lt;IValueWillChange&lt;T&gt;&gt;, IListenable {
+  value_
+  public set(newValue: T) {
+    const oldValue = this.value_
+    newValue = this.prepareNewValue_(newValue) as any
+    if (newValue !== globalState.UNCHANGED) {
+        this.setNewValue_(newValue)
+    }
+  }
+  setNewValue_(newValue: T) {
+    const oldValue = this.value_
+    this.value_ = newValue
+    this.reportChanged()
+    if (hasListeners(this)) {
+      notifyListeners(this, {
+        type: UPDATE,
+        object: this,
+        newValue,
+        oldValue
+      })
+    }
+  }
+}
+      </code></pre>
+    </div>
+
+    <div class="ft-page" data-id="mobx-observable-value-cont-page">
+      <h2>MobX ObservableValue (cont)</h2>
+      <pre><code class="language-ts">
+export class ObservableValue&lt;T&gt; extends Atom implements IObservableValue&lt;T&gt;, IInterceptable&lt;IValueWillChange&lt;T&gt;&gt;, IListenable {
+  value_
+  // ...
+  public get(): T {
+    this.reportObserved()
+    return this.dehanceValue(this.value_)
+  }
+  observe_(listener: (change: IValueDidChange&lt;T&gt;) => void, fireImmediately?: boolean): Lambda {
+    if (fireImmediately)
+      listener({
+        observableKind: "value",
+        debugObjectName: this.name_,
+        object: this,
+        type: UPDATE,
+        newValue: this.value_,
+        oldValue: undefined
+      })
+    return registerListener(this, listener)
+  }
+}
+      </code></pre>
+    </div>
+
+    <div class="ft-page" data-id="mobx-propagate-changed-page">
+      <h2>MobX propagateChanged</h2>
+      <pre><code class="language-ts">
+export function propagateChanged(observable: IObservable) {
+  if (observable.lowestObserverState_ === IDerivationState_.STALE_) return
+  observable.lowestObserverState_ = IDerivationState_.STALE_
+
+  observable.observers_.forEach(d => {
+    if (d.dependenciesState_ === IDerivationState_.UP_TO_DATE_) {
+      if (__DEV__ && d.isTracing_ !== TraceMode.NONE) {
+        logTraceInfo(d, observable)
+      }
+      d.onBecomeStale_()
+    }
+    d.dependenciesState_ = IDerivationState_.STALE_
+  })
+}
+      </code></pre>
+    </div>
+
+
+    <!-- Redux under the hood -->
+
     <div class="ft-page" data-id="redux-title-page">
-      <h2>Redux</h2>
+      <div class="stack-center">
+        <div class="stacked-center">
+          <h2>Redux</h2>
+        </div>
+      </div>
     </div>
 
     <div class="ft-page" data-id="redux-create-store-page">
