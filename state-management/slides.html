@@ -123,10 +123,11 @@ class Timer extends React.Component {
       </div>
     </div>
 
-    <div class="ft-page" data-id="solutions-page">
+    <div class="ft-page" data-id="frameworks-page">
       <h2>Frameworks</h2>
       <div class="stack-center">
-        <img class="stacked-center" src="img/state_mgmt_libs.svg" />
+        <div class="stack-center"><img class="stacked-center" src="img/state_mgmt_libs.svg"></div>
+        <div class="ft-fragment stack-center"><img class="stacked-center" src="img/state_mgmt_libs_emph.svg"></div>
       </div>
     </div>
 
@@ -139,6 +140,25 @@ class Timer extends React.Component {
 
       <script type="module" src="js/issuer/mobx/views.js"></script>
       <app-view></app-view>
+    </div>
+
+    <div class="ft-page" data-id="features-page">
+      <h2>Features</h2>
+
+      <ul>
+        <li>Navigation
+          <p>
+          <ul>
+            <li>List page</li>
+            <li>Issue page</li>
+            <li>Edit page</li>
+          </ul>
+          </p>
+        </li>
+        <li>Adding issues</li>
+        <li>Updating issues</li>
+        <li>Saving to/loading from local storage</li>
+      </ul>
     </div>
 
     <div class="ft-page" data-id="domain-model-page">
@@ -223,6 +243,15 @@ setInterval(() => {
       </code></pre>
     </div>
 
+    <div class="ft-page" data-id="mobx-questions-page">
+      <div class="stack-center">
+        <div class="stacked-center">
+          <h2>Now, how do we build an app with that?</h2>
+          <h3 class="ft-fragment">What architectural and design patterns can we employ?</h3>
+        </div>
+      </div>
+    </div>
+
     <div class="ft-page" data-id="mobx-app-diagram-page">
       <h2>App Architecture</h2>
 
@@ -261,20 +290,24 @@ function counterReducer(state = { value: 0 }, action) {
       return state
   }
 }
-
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
 let store = createStore(counterReducer)
 
 store.subscribe(() => console.log(store.getState()))
 
-store.dispatch({ type: 'counter/incremented' })
-// {value: 1}
-store.dispatch({ type: 'counter/incremented' })
-// {value: 2}
-store.dispatch({ type: 'counter/decremented' })
-// {value: 1}
+store.dispatch({ type: 'counter/incremented' }) // {value: 1}
+store.dispatch({ type: 'counter/decremented' }) // {value: 0}
       </code></pre>
+    </div>
+
+    <div class="ft-page" data-id="redux-questions-page">
+      <div class="stack-center">
+        <div class="stacked-center">
+          <h2>Now, how do we build an app with that?</h2>
+          <h3 class="ft-fragment">What architectural and design patterns can we employ?</h3>
+        </div>
+      </div>
     </div>
 
     <div class="ft-page" data-id="redux-app-diagram-page">

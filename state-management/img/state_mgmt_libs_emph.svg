@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:xhtml="http://www.w3.org/1999/xhtml"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="721.31097"
+   height="356.37622"
+   viewBox="-0.5 -0.5 721.31097 356.37622"
+   id="svg955"
+   sodipodi:docname="state_mgmt_libs_emph.svg"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)">
+  <metadata
+     id="metadata959">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1015"
+     id="namedview957"
+     showgrid="false"
+     inkscape:zoom="1.7226075"
+     inkscape:cx="338.31426"
+     inkscape:cy="175.27548"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg955"
+     inkscape:document-rotation="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <defs
+     id="defs923" />
+  <g
+     id="g945"
+     transform="translate(0.31096649,128.73832)">
+    <ellipse
+       cx="59.689034"
+       cy="35.322399"
+       rx="60"
+       ry="40"
+       fill="#dae8fc"
+       stroke="#6c8ebf"
+       pointer-events="all"
+       id="ellipse925"
+       style="stroke:#ff0000;stroke-opacity:1;stroke-width:3.77952756;stroke-miterlimit:4;stroke-dasharray:none" />
+    <g
+       transform="translate(-1.381279,3.2520866)"
+       id="g933">
+      <switch
+         id="switch931">
+        <foreignObject
+           style="overflow: visible; text-align: left;"
+           pointer-events="none"
+           width="100%"
+           height="100%"
+           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+          <xhtml:div
+             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 38px; height: 1px; padding-top: 40px; margin-left: 41px;">
+            <xhtml:div
+               style="box-sizing: border-box; font-size: 0; text-align: center; ">
+              <xhtml:div
+                 style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                <xhtml:h1>MobX</xhtml:h1>
+              </xhtml:div>
+            </xhtml:div>
+          </xhtml:div>
+        </foreignObject>
+        <text
+           x="60"
+           y="44"
+           fill="#000000"
+           font-family="Helvetica"
+           font-size="12px"
+           text-anchor="middle"
+           id="text929"
+           style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
+             id="tspan961">MobX</tspan></text>
+      </switch>
+    </g>
+    <ellipse
+       cx="660"
+       cy="35.322399"
+       rx="60"
+       ry="40"
+       fill="#d5e8d4"
+       stroke="#82b366"
+       pointer-events="all"
+       id="ellipse935"
+       style="stroke-width:3.77952756;stroke-miterlimit:4;stroke-dasharray:none;stroke:#ff0000;stroke-opacity:1" />
+    <g
+       transform="translate(-1.0560305,2.6183991)"
+       id="g943">
+      <switch
+         id="switch941">
+        <foreignObject
+           style="overflow: visible; text-align: left;"
+           pointer-events="none"
+           width="100%"
+           height="100%"
+           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+          <xhtml:div
+             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 38px; height: 1px; padding-top: 40px; margin-left: 641px;">
+            <xhtml:div
+               style="box-sizing: border-box; font-size: 0; text-align: center; ">
+              <xhtml:div
+                 style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                <xhtml:h1>Redux</xhtml:h1>
+              </xhtml:div>
+            </xhtml:div>
+          </xhtml:div>
+        </foreignObject>
+        <text
+           x="660"
+           y="44"
+           fill="#000000"
+           font-family="Helvetica"
+           font-size="12px"
+           text-anchor="middle"
+           id="text939"
+           style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
+             id="tspan963">Redux</tspan></text>
+      </switch>
+    </g>
+    <ellipse
+       cx="217.52655"
+       cy="183.17308"
+       rx="83.824677"
+       ry="43.349586"
+       fill="#dae8fc"
+       stroke="#6c8ebf"
+       pointer-events="all"
+       id="ellipse925-0"
+       style="fill:#d38d5f;stroke-width:1.23047" />
+    <g
+       transform="translate(156.33905,151.10277)"
+       id="g933-6">
+      <switch
+         id="switch931-3">
+        <foreignObject
+           style="overflow: visible; text-align: left;"
+           pointer-events="none"
+           width="100%"
+           height="100%"
+           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+          <xhtml:div
+             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 38px; height: 1px; padding-top: 40px; margin-left: 41px;">
+            <xhtml:div
+               style="box-sizing: border-box; font-size: 0; text-align: center; ">
+              <xhtml:div
+                 style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                <xhtml:h1>Knockout</xhtml:h1>
+              </xhtml:div>
+            </xhtml:div>
+          </xhtml:div>
+        </foreignObject>
+        <text
+           x="60"
+           y="44"
+           fill="#000000"
+           font-family="Helvetica"
+           font-size="12px"
+           text-anchor="middle"
+           id="text929-8"
+           style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
+             id="tspan961-5">Knockout</tspan></text>
+      </switch>
+    </g>
+    <ellipse
+       cx="215.45169"
+       cy="-59.712563"
+       rx="60"
+       ry="40"
+       fill="#dae8fc"
+       stroke="#6c8ebf"
+       pointer-events="all"
+       id="ellipse925-4"
+       style="fill:#ff9955" />
+    <g
+       transform="translate(154.38138,-91.782873)"
+       id="g933-63">
+      <switch
+         id="switch931-1">
+        <foreignObject
+           style="overflow: visible; text-align: left;"
+           pointer-events="none"
+           width="100%"
+           height="100%"
+           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+          <xhtml:div
+             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 38px; height: 1px; padding-top: 40px; margin-left: 41px;">
+            <xhtml:div
+               style="box-sizing: border-box; font-size: 0; text-align: center; ">
+              <xhtml:div
+                 style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                <xhtml:h1>Akita</xhtml:h1>
+              </xhtml:div>
+            </xhtml:div>
+          </xhtml:div>
+        </foreignObject>
+        <text
+           x="60"
+           y="44"
+           fill="#000000"
+           font-family="Helvetica"
+           font-size="12px"
+           text-anchor="middle"
+           id="text929-7"
+           style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
+             id="tspan961-59">Akita</tspan></text>
+      </switch>
+    </g>
+    <ellipse
+       cx="488.87439"
+       cy="-88.738319"
+       rx="60"
+       ry="40"
+       fill="#d5e8d4"
+       stroke="#82b366"
+       pointer-events="all"
+       id="ellipse935-6"
+       style="fill:#87de87" />
+    <g
+       transform="translate(-172.18163,-121.44232)"
+       id="g943-1">
+      <switch
+         id="switch941-7">
+        <foreignObject
+           style="overflow: visible; text-align: left;"
+           pointer-events="none"
+           width="100%"
+           height="100%"
+           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+          <xhtml:div
+             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 38px; height: 1px; padding-top: 40px; margin-left: 641px;">
+            <xhtml:div
+               style="box-sizing: border-box; font-size: 0; text-align: center; ">
+              <xhtml:div
+                 style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                <xhtml:h1>Recoil</xhtml:h1>
+              </xhtml:div>
+            </xhtml:div>
+          </xhtml:div>
+        </foreignObject>
+        <text
+           x="660"
+           y="44"
+           fill="#000000"
+           font-family="Helvetica"
+           font-size="12px"
+           text-anchor="middle"
+           id="text939-8"
+           style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
+             id="tspan963-5">Recoil</tspan></text>
+      </switch>
+    </g>
+  </g>
+  <ellipse
+     cx="532.59735"
+     cy="259.13727"
+     rx="60"
+     ry="40"
+     fill="#d5e8d4"
+     stroke="#82b366"
+     pointer-events="all"
+     id="ellipse935-0"
+     style="fill:#d3bc5f" />
+  <g
+     transform="translate(-128.41068,226.43326)"
+     id="g943-0">
+    <switch
+       id="switch941-4">
+      <foreignObject
+         style="overflow: visible; text-align: left;"
+         pointer-events="none"
+         width="100%"
+         height="100%"
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+        <xhtml:div
+           style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 38px; height: 1px; padding-top: 40px; margin-left: 641px;">
+          <xhtml:div
+             style="box-sizing: border-box; font-size: 0; text-align: center; ">
+            <xhtml:div
+               style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+              <xhtml:h1>Flux</xhtml:h1>
+            </xhtml:div>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         x="660"
+         y="44"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="12px"
+         text-anchor="middle"
+         id="text939-4"
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
+           id="tspan963-4">Flux</tspan></text>
+    </switch>
+  </g>
+  <switch
+     id="switch953"
+     transform="translate(0.31096649,128.73832)">
+    <g
+       requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+       id="g947" />
+    <a
+       transform="translate(0,-5)"
+       xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems"
+       target="_blank"
+       id="a951">
+      <text
+         text-anchor="middle"
+         font-size="10px"
+         x="50%"
+         y="100%"
+         id="text949">Viewer does not support full SVG 1.1</text>
+    </a>
+  </switch>
+  <ellipse
+     cx="360.40247"
+     cy="216.08389"
+     rx="60"
+     ry="40"
+     fill="#d5e8d4"
+     stroke="#82b366"
+     pointer-events="all"
+     id="ellipse935-0-3"
+     style="fill:#c837ab" />
+  <g
+     transform="translate(-300.34954,183.57189)"
+     id="g943-0-6">
+    <switch
+       id="switch941-4-7">
+      <foreignObject
+         style="overflow: visible; text-align: left;"
+         pointer-events="none"
+         width="100%"
+         height="100%"
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+        <xhtml:div
+           style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 38px; height: 1px; padding-top: 40px; margin-left: 641px;">
+          <xhtml:div
+             style="box-sizing: border-box; font-size: 0; text-align: center; ">
+            <xhtml:div
+               style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+              <xhtml:h1>RxJS</xhtml:h1>
+            </xhtml:div>
+          </xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         x="660"
+         y="44"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="12px"
+         text-anchor="middle"
+         id="text939-4-5"
+         style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
+           id="tspan963-4-3">RxJS</tspan></text>
+    </switch>
+  </g>
+</svg>
