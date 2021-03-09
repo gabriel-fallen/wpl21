@@ -54,8 +54,14 @@ class IssueView extends MobxLitElement {
   static get properties() {
     return {
       app: { attribute: false },
-      issue: { attribute: false }
+      issue: { attribute: false },
+      editing: { attribute: false }
     };
+  }
+
+  constructor() {
+    super();
+    this.editing = false;
   }
 
   render() {
@@ -69,12 +75,29 @@ class IssueView extends MobxLitElement {
           <i class="form-icon"></i> Active
         </label>
       </div>
-      <p>${this.issue.description}</p>
+      ${ this.editing ?
+        html`
+          <div class="form-group">
+            <textarea class="form-input" rows="4" id="description" .value="${this.issue.description}"></textarea>
+            <button class="btn btn-primary" @click=${this.updateDescription}>Save</button>
+          </div>
+        ` :
+        html`<p style="cursor: pointer;" @click=${() => this.editing = true}>${this.issue.description}</p>`
+      }
     `;
   }
 
   toggle() {
     this.issue.active = !this.issue.active;
+  }
+
+  updateDescription(e) {
+    e.preventDefault();
+
+    const description = this.shadowRoot.querySelector('#description').value;
+
+    this.editing = false;
+    this.issue.description = description;
   }
 }
 
