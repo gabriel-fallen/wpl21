@@ -1,7 +1,7 @@
 import { LitElement, html } from 'https://unpkg.com/lit-element/lit-element.js?module';
 
 import { Issue } from '../models.js';
-import { issueAdded, toggleActive } from './issues.js';
+import { descriptionChanged, issueAdded, toggleActive } from './issues.js';
 import { LIST, ISSUE, EDIT, goTo } from './pages.js';
 
 import store from './store.js';
@@ -50,8 +50,14 @@ customElements.define('to-list-store', ToList);
 class IssueView extends LitElement {
   static get properties() {
     return {
-      index: { attribute: false }
+      index: { attribute: false },
+      editing: { attribute: false }
     };
+  }
+
+  constructor() {
+    super();
+    this.editing = false;
   }
 
   render() {
@@ -68,12 +74,29 @@ class IssueView extends LitElement {
           <i class="form-icon"></i> Active
         </label>
       </div>
-      <p>${issue.description}</p>
+      ${ this.editing ?
+        html`
+          <div class="form-group">
+            <textarea class="form-input" rows="4" id="description" .value="${issue.description}"></textarea>
+            <button class="btn btn-primary" @click=${this.updateDescription}>Save</button>
+          </div>
+        ` :
+        html`<p style="cursor: pointer;" @click=${() => this.editing = true}>${issue.description}</p>`
+      }
     `;
   }
 
   toggle() {
     store.dispatch(toggleActive(this.index));
+  }
+
+  updateDescription(e) {
+    e.preventDefault();
+
+    const description = this.shadowRoot.querySelector('#description').value;
+
+    this.editing = false;
+    store.dispatch(descriptionChanged(this.index, description));
   }
 }
 
