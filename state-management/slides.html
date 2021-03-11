@@ -10,6 +10,38 @@
   <link rel="stylesheet" href="css/themes/default.css">
   <link rel="stylesheet" href="css/prism.css">
 
+  <style type="text/css">
+    #the-matrix tr th {
+      border-bottom-style: solid;
+      border-bottom-width: 2px;
+      border-bottom-color: white;
+      padding: 1em;
+      font-size: larger;
+      text-align: center;
+    }
+    #the-matrix tr td {
+      border-bottom-style: solid;
+      border-bottom-width: 2px;
+      border-bottom-color: white;
+      padding: 1em;
+      text-align: center;
+    }
+    #examples-table tr th {
+      border-bottom-style: solid;
+      border-bottom-width: 2px;
+      border-bottom-color: white;
+      padding: 0rem 1rem 0.5rem 1rem;
+      font-size: larger;
+    }
+    #examples-table tr td {
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      border-bottom-color: white;
+      padding: 0.5rem 1rem 0.5rem 1rem;
+      text-align: right;
+    }
+  </style>
+
   <!-- Polyfills only needed for Firefox and Edge. -->
   <script src="https://unpkg.com/@webcomponents/webcomponentsjs@latest/webcomponents-loader.js"></script>
   <script type="text/javascript">
@@ -321,6 +353,84 @@ store.dispatch({ type: 'counter/decremented' }) // {value: 0}
 
       <script type="module" src="js/issuer/redux/views.js"></script>
       <store-view></store-view>
+    </div>
+
+  </div>
+
+  <div class="ft-section" data-id="to-state-or-not-to-state" data-title="To state or not to state">
+
+    <div class="ft-page" data-id="when-state-page">
+      <div class="stack-center">
+        <div class="stacked-center">
+          <h2>When to use state management?</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="ft-page" data-id="state-dimensions-page">
+      <h2>Two dimensions to state</h2>
+      <dl>
+        <dt class="ft-fragment">Local/global</dt>
+        <dd class="ft-fragment">is this piece of state relevant to a single component?</dd>
+        <dt class="ft-fragment">Transient/persistent</dt>
+        <dd class="ft-fragment">do we need to keep this piece of state between sessions?</dd>
+      </dl>
+    </div>
+
+    <div class="ft-page" data-id="state-matrix-page">
+      <div class="stack-center">
+        <div class="stacked-center">
+          <h2>The Matrix</h2>
+          <table id="the-matrix">
+            <tr>
+              <th></th>
+              <th>Local</th>
+              <th>Global</th>
+            </tr>
+            <tr>
+              <th>Transient</th>
+              <td><pre><code>this.state</code></pre>/hooks</td>
+              <td><pre><code>React.createContext</code></pre></td>
+            </tr>
+            <tr>
+              <th>Persistent</th>
+              <td>???</td>
+              <td>MobX/Rdux</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="ft-page" data-id="state-examples-page">
+      <h2>Examples</h2>
+      <table id="examples-table">
+        <tr>
+          <th>State</th>
+          <th>Local?</th>
+          <th>Transient?</th>
+        </tr>
+        <tr class="ft-fragment">
+          <td>Text in an input field</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="ft-fragment">
+          <td>App color theme</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="ft-fragment">
+          <td>Goods in a shopping cart</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="ft-fragment">
+          <td>User profile</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
     </div>
 
   </div>
