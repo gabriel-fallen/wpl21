@@ -15,7 +15,7 @@
 <div class="flowtime">
   
   <div class="ft-section" data-id="meta" data-title="Introduction">
-    
+
     <div class="ft-page" data-id="title-page">
       <div class="stack-center">
         <div class="stacked-center">
@@ -33,6 +33,8 @@
         <li>Opinionated</li>
         <li>Supplemental</li>
         <li>Superficial</li>
+        <li class="ft-fragment">Not nearly as well-prepared as the previous one</li>
+        <li class="ft-fragment">No demos &#x1F641</li>
       </ul>
     </div>
 
@@ -67,6 +69,7 @@
         <li class="ft-fragment">Virtualised OS (Infrastructure-as-a-Service)</li>
         <li class="ft-fragment">Conteinerised Services (Platform-as-a-Service)</li>
         <li class="ft-fragment">Sandboxed Functionality (Function-as-a-Service)</li>
+        <li class="ft-fragment">Moving it all to the Edge (Cloudlets, "Edge Cloud")</li>
       </ol>
     </div>
 
@@ -86,14 +89,14 @@
       <h2>Frontend technology</h2>
 
       <ul>
-        <li class="ft-fragment">JavaSript</li>
+        <li class="ft-fragment">JavaScript</li>
         <li class="ft-fragment">WebAssembly (emerging)</li>
       </ul>
 
       <h2 class="ft-fragment">Backend technology</h2>
 
       <ul>
-        <li class="ft-fragment">JavaSript</li>
+        <li class="ft-fragment">JavaScript</li>
         <li class="ft-fragment">WebAssembly (emerging)</li>
       </ul>
     </div>
@@ -106,10 +109,118 @@
       <h2>Backend trends</h2>
 
       <ul>
-        <li>Data-computation separation</li>
+        <li>Data&ndash;computation separation</li>
         <li>Computation to data, computation to clients</li>
-        <li>?</li>
+        <li>GPU or TPU accelerated computations</li>
       </ul>
+    </div>
+
+    <div class="ft-page" data-id="faas-1-page">
+      <h2>FaaS example</h2>
+      <pre><code class="language-js">
+const randomBytes = require('crypto').randomBytes;
+const AWS = require('aws-sdk');
+const ddb = new AWS.DynamoDB.DocumentClient();
+
+exports.handler = (event, context, callback) => {
+  if (!event.requestContext.authorizer) {
+    errorResponse('Authorization not configured', context.awsRequestId, callback);
+    return;
+  }
+
+  const rideId = toUrlString(randomBytes(16));
+  console.log('Received event (', rideId, '): ', event);
+
+  const username = event.requestContext.authorizer.claims['cognito:username'];
+  const requestBody = JSON.parse(event.body);
+  const pickupLocation = requestBody.PickupLocation;
+
+  // The Business Logic &#x1F601
+  const unicorn = findUnicorn(pickupLocation);
+  // ...
+      </code></pre>
+    </div>
+
+    <div class="ft-page" data-id="faas-2-page">
+      <h2>FaaS example cont.</h2>
+      <pre><code class="language-js">
+exports.handler = (event, context, callback) => {
+  // ...
+  recordRide(rideId, username, unicorn).then(() => {
+    callback(null, {
+      statusCode: 201,
+      body: JSON.stringify({
+        RideId: rideId,
+        Unicorn: unicorn,
+        UnicornName: unicorn.Name,
+        Eta: '30 seconds',
+        Rider: username,
+      }),
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    });
+  }).catch((err) => {
+    console.error(err);
+    errorResponse(err.message, context.awsRequestId, callback)
+  });
+};
+      </code></pre>
+    </div>
+
+    <div class="ft-page" data-id="faas-3-page">
+      <h2>FaaS example appendix</h2>
+      <pre><code class="language-js">
+function recordRide(rideId, username, unicorn) {
+  return ddb.put({
+    TableName: 'Rides',
+    Item: {
+      RideId: rideId,
+      User: username,
+      Unicorn: unicorn,
+      UnicornName: unicorn.Name,
+      RequestTime: new Date().toISOString(),
+    },
+  }).promise();
+}
+function errorResponse(errorMessage, awsRequestId, callback) {
+  callback(null, {
+    statusCode: 500,
+    body: JSON.stringify({
+      Error: errorMessage,
+      Reference: awsRequestId,
+    }),
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+  });
+}
+      </code></pre>
+    </div>
+
+    <div class="ft-page" data-id="edge-page">
+      <h2>Edge example</h2>
+      <pre><code class="language-rust">
+const BACKEND_ORIGIN_0: &str = "backend_name";
+const BACKEND_ORIGIN_1: &str = "other_backend_name";
+
+#[fastly::main]
+fn main(req: Request) -> Result<Response, Error> {
+  match (req.get_path(), req.get_query_str()) {
+    // Requests for exactly / => origin 0
+    // (query strings not allowed)
+    ("/", None) => Ok(req.send(BACKEND_ORIGIN_0)?),
+    // Requests for /status and all subpaths => origin 1
+    // (query strings allowed)
+    (s, _) if s == "/status" || s.starts_with("/status/") => Ok(req.send(BACKEND_ORIGIN_1)?),
+    // Unrecognised path => 404 error
+    _ => Ok(
+      Response::from_body("The page you requested could not be found")
+        .with_status(StatusCode::NOT_FOUND),
+    ),
+  }
+}
+      </code></pre>
     </div>
 
   </div>
@@ -126,13 +237,130 @@
         <li><a href="http://unhosted.org/">Unhosted</a>
           <p>
             <ul><li><a href="https://solidproject.org/">SOLID</a></li></ul>
+            <ul><li><a href="https://cloudwall.me/">CloudWall</a></li></ul>
           </p>
         </li>
       </ul>
     </div>
 
+    <div class="ft-page" data-id="pwa-page">
+      <h2>Progressive Web Apps</h2>
+      <p>web apps that use emerging web browser APIs and features to bring a native app-like user experience to cross-platform web applications</p>
+
+      <ol>
+        <li>Secure contexts (HTTPS)</li>
+        <li>Service Workers</li>
+        <li>Manifest file</li>
+      </ol>
+    </div>
+
+    <div class="ft-page" data-id="service-worker-1-page">
+      <h2>Service Worker example</h2>
+      <pre><code class="language-js">
+self.oninstall = function(event) {
+  event.waitUntil(self.skipWaiting());
+};
+self.onactivate = function(event) {
+  event.waitUntil(self.clients.claim());
+};
+
+self.onfetch = function(event) {
+  const request = event.request;
+  if (isResource(request)) {
+    event.respondWith(fetchFromBestServer(request));
+  } else {
+    event.respondWith(fetch(request));
+  }
+};
+
+function isResource(request) {
+  return request.url.match(/\/imgs\/.*$/) && request.method === 'GET';
+}
+      </code></pre>
+    </div>
+
+    <div class="ft-page" data-id="service-worker-2-page">
+      <h2>Service Worker helpers</h2>
+      <pre><code class="language-js">
+function fetchFromBestServer(request) {
+  const session = request.url.match(/\?session=([^&]*)/)[1];
+  return getServerLoads(session)
+    .then(selectServer)
+    .then(function(serverUrl) {
+      const resourcePath = request.url.match(/\/imgs\/[^?]*/)[0];
+      const serverRequest = new Request(serverUrl + resourcePath);
+      return fetch(serverRequest);
+    });
+}
+
+function getServerLoads(session) {
+  return fetch('./server-loads?session=' + session).then(function(response) {
+    return response.json();
+  });
+}
+
+function selectServer(serverLoads) {
+  const min = Math.min.apply(Math, serverLoads);
+  const serverIndex = serverLoads.indexOf(min);
+  return './server-' + (serverIndex + 1);
+}
+      </code></pre>
+    </div>
+
+    <div class="ft-page" data-id="manifest-page">
+      <h2>Manifest example</h2>
+      <pre><code class="language-js">
+{
+  "name": "MixDress Web App",
+  "short_name": "MixDress Web",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fff",
+  "theme_color": "#673ab8",
+  "icons": [{
+    "src": "./assets/icons/icon-192x192.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  },
+  {
+    "src": "./assets/icons/icon-512x512.png",
+    "type": "image/png",
+    "sizes": "512x512"
+  }]
+}
+      </code></pre>
+    </div>
+
   </div>
 
+
+  <div class="ft-section" data-id="conclusion" data-title="Conclusion">
+
+    <div class="ft-page" data-id="conclusion-page">
+      <h2>So where is the Web going?</h2>
+      <br />
+      <h3 class="ft-fragment">Highly distributed heterogenious peer-to-peer systems</h3>
+      <br />
+      <ul>
+        <li class="ft-fragment">Mobile devices with intermittent connectivity</li>
+        <li class="ft-fragment">"Edge Cloud" and IoT devices</li>
+        <li class="ft-fragment">Multi-zone Cloud</li>
+        <li class="ft-fragment">Mesh of services from single functions to GPU enabled</li>
+      </ul>
+    </div>
+
+    <div class="ft-page" data-id="challenges-page">
+      <h2>Major challenges</h2>
+      <ul>
+        <li class="ft-fragment">Climate impact</li>
+        <li class="ft-fragment">Data ownership</li>
+        <li class="ft-fragment">Privacy</li>
+        <li class="ft-fragment">Security</li>
+      </ul>
+    </div>
+
+  </div>
 
 <script src="js/flowtime.min.js"></script>
 <script src="js/prism.js"></script>
